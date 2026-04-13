@@ -1,6 +1,6 @@
 ## Organizing_the_computer_desktop
 
-**Desktop Organizer Tool (Win10/Win11)**
+**桌面整理小工具 (Win10/Win11)**
 
 A lightweight desktop organization assistant written in Python. Features include:
 
@@ -93,4 +93,3 @@ The current built-in classifications and extensions include (modifiable in `DEFA
 - Support for custom classification rules (via config files or UI).
 - Support for sorting by date, file size, and other dimensions.
 - "Undo" functionality to revert the organization.
-```
