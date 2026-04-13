@@ -1,66 +1,66 @@
 ## Organizing_the_computer_desktop
 
-**电脑桌面整理小工具（Win10/Win11）**
+**Desktop Organizer Tool (Win10/Win11)**
 
-使用 Python 编写的简单桌面整理助手，支持：
+A lightweight desktop organization assistant written in Python. Features include:
 
-- **一键整理**：按文件类型把桌面文件移动到「文档 / 图片 / 视频 / 音乐 / 压缩包 / 安装包」等子文件夹
-- **可视化界面（GUI）**：使用 Tkinter，界面简洁，贴近 Win11 风格
-- **命令行模式**：也可以在终端中直接整理某个目录
+- **One-Click Organization**: Automatically sorts desktop files into subfolders like "Documents", "Images", "Videos", "Music", "Archives", and "Installers" based on file type.
+- **GUI (Graphical User Interface)**: Built with Tkinter, featuring a clean, Windows 11-inspired interface.
+- **CLI Mode**: Supports organizing specific directories directly from the command line.
 
 ---
 
-## 使用方法
+## Usage
 
-### 1. 环境要求
+### 1. Prerequisites
 
-- **操作系统**: Windows 10 / Windows 11
-- **Python 版本**: 建议 Python 3.9 及以上
-- 不依赖第三方库，只使用 Python 标准库（含 Tkinter）
+- **Operating System**: Windows 10 / Windows 11
+- **Python Version**: Python 3.9 or higher recommended
+- **Dependencies**: No third-party libraries required; uses only Python standard libraries (including Tkinter).
 
-### 2. 安装 / 准备
+### 2. Installation / Setup
 
-1. 安装好 Python，并确保在终端可以运行 `python` 或 `python3`
-2. 克隆或下载本项目代码到本地
+1. Ensure Python is installed and that `python` or `python3` is available in your terminal.
+2. Clone or download this repository to your local machine.
 
 ```bash
-git clone <your-repo-url>
+git clone 
 cd Organizing_the_computer_desktop
 ```
 
 ---
 
-## 图形界面使用（推荐）
+## GUI Usage (Recommended)
 
-在项目根目录下运行：
+Run the following command in the project root directory:
 
 ```bash
 python main.py
 ```
 
-功能说明：
+**Feature Overview:**
 
-- **目标目录（默认桌面）**: 启动时会自动检测当前用户的桌面路径
-- **选择文件夹...**: 可手动选择任意需要整理的目录
-- **开始整理**: 按当前内置规则，将该目录下的文件移动到对应子文件夹
-- **查看规则说明**: 弹出当前分类规则及对应扩展名列表
-- 下方「操作日志」中会显示每个文件的处理结果
+- **Target Directory (Default Desktop)**: Automatically detects the current user's desktop path upon launch.
+- **Select Folder...**: Allows manual selection of any directory to organize.
+- **Start Organizing**: Moves files in the selected directory to corresponding subfolders based on built-in rules.
+- **View Rules**: Displays a popup with the current classification rules and file extension lists.
+- **Operation Log**: Displays the processing result for each file in the log area below.
 
-> 注意：程序只整理当前目录下的文件，不会递归子文件夹。
+> **Note:** The program only organizes files in the current directory and does not recursively process subfolders.
 
 ---
 
-## 命令行模式使用
+## CLI Mode Usage
 
-你也可以以命令行方式整理目录，适合写脚本或计划任务：
+You can also organize directories via the command line, which is suitable for scripting or scheduled tasks.
 
-### 1）整理默认桌面目录
+### 1) Organize the Default Desktop
 
 ```bash
 python main.py --cli
 ```
 
-### 2）整理指定目录
+### 2) Organize a Specific Directory
 
 ```bash
 python main.py --cli "D:\Some\Folder\Path"
@@ -68,28 +68,29 @@ python main.py --cli "D:\Some\Folder\Path"
 
 ---
 
-## 默认分类规则
+## Default Classification Rules
 
-当前内置的分类及扩展名包括（可在 `main.py` 中的 `DEFAULT_RULES` 修改）：
+The current built-in classifications and extensions include (modifiable in `DEFAULT_RULES` within `main.py`):
 
-- **文档**: `.doc`, `.docx`, `.pdf`, `.txt`, `.ppt`, `.pptx`, `.xls`, `.xlsx`
-- **图片**: `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`, `.svg`, `.webp`
-- **视频**: `.mp4`, `.avi`, `.mkv`, `.mov`, `.flv`
-- **音乐**: `.mp3`, `.wav`, `.flac`, `.aac`, `.ogg`
-- **压缩包**: `.zip`, `.rar`, `.7z`, `.tar`, `.gz`
-- **安装包**: `.exe`, `.msi`
+- **Documents**: `.doc`, `.docx`, `.pdf`, `.txt`, `.ppt`, `.pptx`, `.xls`, `.xlsx`
+- **Images**: `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`, `.svg`, `.webp`
+- **Videos**: `.mp4`, `.avi`, `.mkv`, `.mov`, `.flv`
+- **Music**: `.mp3`, `.wav`, `.flac`, `.aac`, `.ogg`
+- **Archives**: `.zip`, `.rar`, `.7z`, `.tar`, `.gz`
+- **Installers**: `.exe`, `.msi`
 
-整理规则说明：
+**Logic Explanation:**
 
-- 只整理**当前目录下的文件**，不进入子目录
-- 若文件已经在对应分类文件夹中，会**跳过**
-- 若目标文件夹中存在同名文件，会自动在文件名后追加 `_1`, `_2` 等数字后缀，避免覆盖
-- 未匹配到任何规则的文件会被**保留在原目录**（并在日志中标记）
+- Only files in the **current directory** are organized; subdirectories are ignored.
+- Files already located in their corresponding category folders are **skipped**.
+- If a file with the same name exists in the target folder, a numeric suffix (e.g., `_1`, `_2`) is appended to the filename to prevent overwriting.
+- Files that do not match any rule are **kept in the original directory** (and marked in the log).
 
 ---
 
-## 后续可以改进的方向
+## Future Improvements
 
-- 支持自定义分类规则（从配置文件或界面中编辑）
-- 支持按日期、大小等更多维度整理
-- 支持「撤销本次整理」功能
+- Support for custom classification rules (via config files or UI).
+- Support for sorting by date, file size, and other dimensions.
+- "Undo" functionality to revert the organization.
+```
